@@ -10,9 +10,6 @@ def paid(amount):
     A[0,j] = 1 for all j
     if j >= m[i] then A[i,j] = A[i - 1, j] + A[i,j - m[i]]
     if j < m[i] then A[i,j] = A[i - 1,j]
-
-
-
     """
 
 
@@ -22,8 +19,6 @@ def find_change(n, coins):
     if n == 0:
         return [[]]
     all_changes = []
-    sorted_change = []
-    new_sorted_change = []
 
     for last_used_coin in coins:
         combos = find_change(n - last_used_coin, coins)
@@ -32,12 +27,6 @@ def find_change(n, coins):
             combo = sorted(combo)
             if combo not in all_changes:
                 all_changes.append(combo)
-    # for i in all_changes:
-    #     sorted_change.append(sorted(i))
-    # for elem in sorted_change:
-    #     if elem not in new_sorted_change:
-    #         new_sorted_change.append(elem)
-    # all_changes = new_sorted_change
     return all_changes
 
 
