@@ -32,4 +32,63 @@ def find_change(n, coins):
 
 m = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
 
-print(find_change(7, m))
+
+def fill(A, until):
+    """
+        Function fill
+        function for filling  A until needed with None 
+
+        PARAMETERS:
+        A : list
+        B : integer     
+    """
+    l = len(A)
+    until = until+2 - l
+    #temp = [None for i in range(len(m))]
+    for i in range(until):
+        A.append([None for i in range(len(m))])
+    # print(len(A))
+
+
+def money(bedrag,  x=12):
+    """
+        Function functie
+        function for amount of combinations their can be paid
+        PARAMETERS:
+        bedrag : integer
+        x : the rate of m[0:limter] that much be  watched
+
+        RETURNS:
+        A[bedrag][x] : the value out of the matrix
+
+        EXAMPLE:
+
+        >>>functie(900)
+        173946022
+        >>>functie(9)
+        8
+
+
+    """
+    if bedrag > (len(A)-1):
+        fill(A, bedrag)
+    if (bedrag < 0)or (x < 0):
+        return 0
+    if bedrag == 0:
+        return 1
+    if A[bedrag][x] != None:
+        return A[bedrag][x]
+    if bedrag >= m[x]:
+        A[bedrag][x] = money(bedrag, x - 1) + money(bedrag - m[x], x)
+        return A[bedrag][x]
+    return money(bedrag, x-1)
+
+
+m = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
+
+A = [[None for i in range(len(m))] for i in range(1)]
+A[0] = [1 for i in range(len(m))]
+
+print(money(6))
+print(money(7))
+print(money(8))
