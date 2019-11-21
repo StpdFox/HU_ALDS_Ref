@@ -1,77 +1,90 @@
-class LinkedNode():
-    value = None
-    next = None
+class ListNode:
+    """
+    Class to make a Linked List
+    EXAMPLE
+    --------
+    >>> linkLst = ListNode()
+    """
 
-    def __init__(self, value):
-        '''Constructor
-        Args:
-            Param1: value you want to set in this node.
-        Returns:
-            Nothing
-        '''
-        self.value = value
+    def __init__(self, data=None, next_node=None):
+        self.data = data
+        self.next = next_node
+
+    def __del__(self):
+        return
+
+    def __repr__(self):
+        if self.next is None:
+            return str(self.data)
+        return str(self.data) + self.next.__repr__()
 
     def append(self, value):
-        '''Function to append to the linked list of nodes. 
-        Args:
-            Param1: value you want to append in the linked nodes.
-        Returns:
-            Nothing
-        '''
+        """
+        Function to add a value to the linked list
+
+        PARAMETERS
+        ------------
+        self : self
+        value :
+                The value to add to the linked list
+        EXAMPLE
+        --------
+        >>> LinkedList = ListNode ()
+        >>> LinkedList . append (15)
+        """
         if self.next == None:
-            self.next = LinkedNode(value)
+            self.next = ListNode(value)
         else:
             self.next.append(value)
 
-    def delete(self, valueToSearch):
-        '''Function to delete a value from the nodes.
-        Args:
-            Param1: Value to search for and delete.
-        Returns:
-            Nothing
-        '''
-        if self.value == valueToSearch:
-            self.value = self.next.value
-            temp = self.next.next
-            self.next.next = None
-            self.next = temp
-        if self.next != None:
-            if self.next.value == valueToSearch:
-                self.next.value = None
+    def delete(self, value, prev=None):
+        """
+        Removes all occurrences of the value from the linked list
+        PARAMETERS
+        ------------
+        self : self
+        value :
+                The value to be removed from the list
+        EXAMPLE
+        --------
+        >>> LinkedList = ListNode ()
+        >>> LinkedList . append (15)
+        >>> LinkedList . delete (15)
+        """
+        while self.data == value:
+            if self.next != None:
+                self.data = self.next.data
                 self.next = self.next.next
             else:
-                self.next.delete(valueToSearch)
+                if prev != None:
+                    prev.next = None
+                self.__del__
+                break
+
+        if self.next != None:
+            self.next.delete(value, self)
 
     def min(self):
-        '''Function to find the minimum value in the array of linked nodes.
-        Args:
-            None.
-        Returns:
-            minimum value from the list of linked nodes.
-        '''
-        if self.value != None:
+        """
+        Returns the minimum value of the LinkedList
+        PARAMETERS
+        ------------
+        self : self
+        EXAMPLE
+        --------
+        >>> LinkedList = ListNode ()
+        >>> LinkedList . append (3)
+        >>> LinkedList . append (15)
+        >>> LinkedList . min ()
+        3
+        """
+        if self.data != None:
             if self.next != None:
-                temp = self.next.min()
-                if temp < self.value:
-                    return temp
+                tmp = self.next.min()
+                if tmp < self.data:
+                    return tmp
                 else:
-                    return self.value
+                    return self.data
             else:
-                return self.value
-        else:
-            return None
-
-
-a = LinkedNode(10)
-print(a.value)
-a.append(11)
-print(a.next.value)
-a.append(12)
-print(a.next.next.value)
-a.delete(11)
-print(a.value)
-print(a.next.value)
-a.append(10)
-a.append(1)
-a.append(100)
-print("min: ", a.min())
+                return self.data
+        return None
