@@ -34,10 +34,7 @@ class myStack():
         >>> stack . isEmpty ()
         True
         """
-        if (len(self.list)) == 0:
-            return True
-        else:
-            return False
+        return bool(self.list)
 
     def push(self, x):
         """
@@ -76,6 +73,7 @@ class myStack():
         15
         """
         return self.list.pop()
+
     def peek(self):
         """
         Function to peek at the top variable on the stack .
@@ -102,6 +100,9 @@ class myStack():
         else:
             return None
 
+
 a = myStack()
+print(a.isEmpty())
 a.push(5)
-print(a.pop())
+
+print(a.isEmpty())

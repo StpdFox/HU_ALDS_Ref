@@ -16,7 +16,8 @@ class mystack:
         >>>a = mystack()
         """
         self.stack = []
-    def push(self,a):
+
+    def push(self, a):
         """
         function push(self,a), function that pushes value a on the stack.
         -------------------------------------------------------------------
@@ -32,7 +33,7 @@ class mystack:
         ' pushed ' 
         """
         self.stack.append(a)
-        
+
     def pop(self):
         """
         function pop(self), pops the top value of the stack and removes them.
@@ -53,8 +54,10 @@ class mystack:
         >>>b.pop()
         8
         """
-        if not self.stack: return self.stack.pop()
+        if not self.stack:
+            return self.stack.pop()
         print("is empty")
+
     def peek(self):
         """
         function peek(self), function that gives top value of stack with out removing it.
@@ -79,14 +82,16 @@ class mystack:
         >>>b.pop()
         9
         """
-        if not self.stack: return self.stack[-1]
+        if not self.stack:
+            return self.stack[-1]
         print("is empty")
+
     def isEmpty(self):
         """
         function isEmpty, function that empties the hole stack.
         --------------------------------------------------------
         PARAMETERS:
-        
+
         self : self
         --------------------------------------------------------
         RETURNS:
@@ -103,4 +108,10 @@ class mystack:
         >>> b.peek()
         'stack is empty'
         """
-        return bool(self.stack)
+        return not self.stack
+
+
+a = mystack()
+print(a.isEmpty())
+print(a.push(1))
+print(a.isEmpty())
