@@ -1,1 +1,7 @@
-Bij de birthday opgave wordt om een lijst gevraagd tussen 1 en 356 .... dat klopt niet , tot en met 1 365
+Min(a) -> min(a{lo:hi])
+
+higher order functions voor de pivot in quicksort want daardoor kregen we 10 keer hetzelfs. 
+iedereen zit nu 100 versies van zn pivot in te leveren.
+
+Bij priority Queue misschien disclaimer dat ze niet heapQ mogen gebruiken, want dit is letterlijk een priority Queue 
+
